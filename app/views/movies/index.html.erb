@@ -1,5 +1,5 @@
 <div class="table-container">
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th><%= sort_link(@query, :title) %></th>
@@ -11,34 +11,49 @@
       </tr>
 
       <tr>
-      <%= search_form_for @query do |f| %>
-        <td>
-          <%= f.search_field :title_cont %>
-        </td>
+        <%= search_form_for @query, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
 
-        <td>
-          <%= f.select :year_eq, Movie.pluck(:year).sort.uniq, include_blank: true %>
-        </td>
+          <td>
+            <%= f.search_field :title_cont, "data-action": "filters#submit" %>
+          </td>
 
-        <td>
+          <td>
+            <%= f.select :year_eq, Movie.pluck(:year).sort.uniq, include_blank: true, "data-action": "filters#submit" %>
+          </td>
 
-        </td>
+          <td>
+            <%= f.collection_select :genre_ids_cont_all, Genre.all, :id, :name, { include_hidden: false }, {
+              multiple: true,
+              class: "dropdown-multi-select dropdown hidden",
+              placeholder: 'All',
+              hidePlaceholder: true,
+            }%>
+          </td>
 
-        <div>
+          <div>
 
-        </div>
+          </div>
 
-        <td>
-          <%= f.submit %>
-        </td>
-      <% end %>
+          <td>
+            <%= f.submit %>
+          </td>
+        <% end %>
 
       </tr>
     </thead>
-    <tbody>
-      <%= render @movies %>
-    </tbody>
+    <%= turbo_frame_tag "table" do %>
+
+      <tbody>
+        <%= render @movies %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <%= raw pagy_nav(@pagy) %>
+        </tr>
+      </tfoot>
+    <% end %>
   </table>
 </div>
 
-<%= raw pagy_nav(@pagy) %>
+
