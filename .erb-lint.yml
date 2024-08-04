@@ -1,0 +1,2 @@
+glob: "**/*.{html,text,js}{+*,}.erb"
+EnableDefaultLinters: true

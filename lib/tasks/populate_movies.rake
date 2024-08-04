@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :db do
-  desc "Parse movies.json and populate Movie, Actor, and Genre models"
+  desc 'Parse movies.json and populate Movie, Actor, and Genre models'
   task populate_movies: :environment do
     require 'json'
 
@@ -8,7 +10,6 @@ namespace :db do
     movies_data = JSON.parse(file)
 
     movies_data.each do |movie_data|
-
       movie = Movie.find_or_create_by(
         title: movie_data['title'],
         year: movie_data['year'].to_i,
