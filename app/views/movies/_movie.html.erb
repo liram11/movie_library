@@ -1,0 +1,16 @@
+<%= tag.tr id: dom_id(movie) do %>
+  <td><%= movie.title %></td>
+  <td><%= movie.year %></td>
+  <td><%= movie.runtime %></td>
+  <td><%= movie.revenue %></td>
+  <td><%= movie.rating %></td>
+  <td>
+    <% movie.genres.each_with_index do |genre, idx| %>
+      <% if movie.genres.size - 1 != idx%>
+        <%= genre.name %>,
+      <% else %>
+        <%= genre.name %>
+      <% end %>
+    <% end %>
+  </td>
+<% end %>

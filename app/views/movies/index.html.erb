@@ -1,0 +1,44 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th><%= sort_link(@query, :title) %></th>
+        <th><%= sort_link(@query, :year) %></th>
+        <th><%= sort_link(@query, :runtime) %></th>
+        <th><%= sort_link(@query, :revenue) %></th>
+        <th><%= sort_link(@query, :rating) %></th>
+        <th><%= sort_link(@query, :genres) %></th>
+      </tr>
+
+      <tr>
+      <%= search_form_for @query do |f| %>
+        <td>
+          <%= f.search_field :title_cont %>
+        </td>
+
+        <td>
+          <%= f.select :year_eq, Movie.pluck(:year).sort.uniq, include_blank: true %>
+        </td>
+
+        <td>
+
+        </td>
+
+        <div>
+
+        </div>
+
+        <td>
+          <%= f.submit %>
+        </td>
+      <% end %>
+
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @movies %>
+    </tbody>
+  </table>
+</div>
+
+<%= raw pagy_nav(@pagy) %>
