@@ -2,7 +2,7 @@
 
 Ransack.configure do |config|
   config.custom_arrows = {
-    up_arrow: '<i class="fa fa-arrow-up"></i>',
-    down_arrow: '<i class="fa fa-arrow-down"></i>'
+    up_arrow: '<i class="bi bi-arrow-up"></i>',
+    down_arrow: '<i class="bi bi-arrow-down"></i>'
   }
 end

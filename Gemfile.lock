@@ -120,8 +120,6 @@ GEM
     ffi (1.17.0)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-darwin)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -326,7 +324,6 @@ DEPENDENCIES
   debug
   erb_lint (~> 0.6.0)
   error_highlight (>= 0.4.0)
-  font-awesome-rails
   importmap-rails
   jbuilder
   pagy (~> 9.0)

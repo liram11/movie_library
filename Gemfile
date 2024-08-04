@@ -46,7 +46,6 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'font-awesome-rails'
 gem 'pagy', '~> 9.0'
 gem 'ransack', '~> 4.2'
 gem 'sassc-rails'

@@ -15,7 +15,7 @@
         </thead>
 
         <tbody is="turbo-frame" id="movie_table_content">
-          <%= render 'movies/table/content' %>
+          <%= render 'content' %>
         </tbody>
       </table>
     <% end %>
@@ -23,5 +23,24 @@
     <%= turbo_frame_tag "pagination_bottom", target: '_top' do %>
       <%== pagy_bootstrap_nav(@pagy) %>
     <% end %>
-
 </div>
+
+<%= turbo_frame_tag 'modal' do %>
+  <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-controller="modal" data-modal-target="modal">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header position-relative d-flex justify-content-between">
+          <h5 class="modal-title font-18">123</h5>
+          <button type="button" class="btn" data-action="modal#close" aria-label="Close">
+            X
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

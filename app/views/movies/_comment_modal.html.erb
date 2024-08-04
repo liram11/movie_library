@@ -1,0 +1,33 @@
+<%= content_tag :div, id: "modal#{dom_id(movie)}", class: "modal fade", aria_hidden:"true", data: { modal_target:"modal" } do %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal" aria-label="Close">
+          <i class="bi bi-arrow-left-short icon-30"></i>
+        </button>
+        <h6 class="p-3 modal-title text-light"><%= movie.title %> Comments</h6>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="comment">
+          <div class="d-flex flex-row">
+            <div class="comment__avatar rounded-circle p-3 bg-primary ">
+            </div>
+            <div class="comment__text bg-primary text-light flex-grow-1 ms-2 p-1">
+              Some text
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer flex-row">
+        <div class="flex-grow-1">
+          <input class="form-control" placeholder="Add comment...">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary p-2 lh-1 rounded-circle btn-lg"><i class="bi bi-send "></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
