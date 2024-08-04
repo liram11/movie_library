@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= f.search_field :title_cont, class: 'form-control filter' , data: { action: 'auto-submit#submit', turbo_action: 'advance' } %>
+  </td>
+
+  <td>
+    <%= f.select :year_eq, Movie.pluck(:year).sort.uniq, { include_blank: true }, { class: 'form-select filter', data: {
+      action: 'auto-submit#submit' } } %>
+  </td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>
+    <%= f.collection_select :genre_ids_cont_all, Genre.all, :id, :name, { include_hidden: false }, {
+      multiple: true, class: "dropdown-multi-select dropdown hidden filter" , placeholder: 'All' ,
+      hidePlaceholder: true, data: { action: 'auto-submit#submit' } } %>
+  </td>
+</tr>

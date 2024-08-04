@@ -1,0 +1,11 @@
+<%= turbo_stream.update 'movie_table_content' do %>
+  <%= render 'movies/table/content', movies: @movies %>
+<% end %>
+
+<%= turbo_stream.update 'pagination_top' do %>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>
+
+<%= turbo_stream.update 'pagination_bottom' do %>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>
