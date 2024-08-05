@@ -18,19 +18,23 @@ class MoviesController < ApplicationController
   protected
 
   def filter_params
-    filter_params = params[:q].permit(
-      :title_cont,
-      :year_eq,
-      :s,
-      genre_ids_cont_all: []
-    )
+    if params[:q].present?
+      filter_params = params[:q].permit(
+        :title_cont,
+        :year_eq,
+        :s,
+        genre_ids_cont_all: []
+      )
 
-    if filter_params[:genre_ids_cont_all]
-      filter_params.merge({
-                            genre_ids_cont_all: filter_params[:genre_ids_cont_all].map { |id| "|#{id}|" }
-                          })
+      if filter_params[:genre_ids_cont_all]
+        filter_params.merge({
+                              genre_ids_cont_all: filter_params[:genre_ids_cont_all].map { |id| "|#{id}|" }
+                            })
+      else
+        filter_params
+      end
     else
-      filter_params
+      {}
     end
   end
 
