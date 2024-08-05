@@ -39,16 +39,14 @@ const miltipleSelectSettings = {
     }
   },
   onInitialize: function () {
-    console.log(this.items)
     this.wrapper.classList.remove("hidden")
   }
 }
 
-
 document.addEventListener('turbo:load', () => {
 
-  document.querySelectorAll('.dropdown-multi-select').forEach((el)=>{
-     new TomSelect(el, miltipleSelectSettings);
+  document.querySelectorAll('.dropdown-multi-select').forEach((el) => {
+    new TomSelect(el, miltipleSelectSettings);
   });
 })
 

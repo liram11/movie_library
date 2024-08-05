@@ -1,31 +1,33 @@
-<%= content_tag :div, id: "modal#{dom_id(movie)}", class: "modal fade", aria_hidden:"true", data: { modal_target:"modal" } do %>
+<%= content_tag :div, id: "comment_modal", class: "modal fade", aria_hidden:"true", data: { modal_target: "modal" } do %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-primary">
         <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal" aria-label="Close">
           <i class="bi bi-arrow-left-short icon-30"></i>
         </button>
-        <h6 class="p-3 modal-title text-light"><%= movie.title %> Comments</h6>
-
+        <%= content_tag :h6, class: "p-3 modal-title text-light", data: { modal_target: "movieTitle" } do %>
+          Comments
+        <% end %>
       </div>
-      <div class="modal-body">
+      <div class="modal-body comments__wrapper">
 
-        <div class="comment">
-          <div class="d-flex flex-row">
-            <div class="comment__avatar rounded-circle p-3 bg-primary ">
-            </div>
-            <div class="comment__text bg-primary text-light flex-grow-1 ms-2 p-1">
-              Some text
-            </div>
-          </div>
+      <%= content_tag :div, class: "d-flex justify-content-center p-5", data: { modal_target: "spinner" } do %>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
+      <% end %>
+
+      <%= content_tag :div, class: "", data: { modal_target: "comments" } do %>
+
+      <% end %>
+
       </div>
       <div class="modal-footer flex-row">
         <div class="flex-grow-1">
-          <input class="form-control" placeholder="Add comment...">
+          <input class="form-control" placeholder="Add comment..." data-modal-target="createCommentText">
         </div>
         <div>
-          <button type="button" class="btn btn-primary p-2 lh-1 rounded-circle btn-lg"><i class="bi bi-send "></i></button>
+          <button type="button" class="btn btn-primary p-2 lh-1 rounded-circle btn-lg" data-action="click->modal#createComment"><i class="bi bi-send "></i></button>
         </div>
       </div>
     </div>

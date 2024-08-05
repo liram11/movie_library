@@ -2,9 +2,6 @@
 
 class MoviesController < ApplicationController
   def index
-    Rails.logger.debug params[:q]
-    Rails.logger.debug filter_params
-
     @query = Movie.ransack(filter_params)
     scope = @query.result(distinct: true).includes(:genres)
 
@@ -21,23 +18,19 @@ class MoviesController < ApplicationController
   protected
 
   def filter_params
-    if params[:q].present?
-      filter_params = params[:q].permit(
-        :title_cont,
-        :year_eq,
-        :s,
-        genre_ids_cont_all: []
-      )
+    filter_params = params[:q].permit(
+      :title_cont,
+      :year_eq,
+      :s,
+      genre_ids_cont_all: []
+    )
 
-      if filter_params[:genre_ids_cont_all]
-        filter_params.merge({
-                              genre_ids_cont_all: filter_params[:genre_ids_cont_all].map { |id| "|#{id}|" }
-                            })
-      else
-        filter_params
-      end
+    if filter_params[:genre_ids_cont_all]
+      filter_params.merge({
+                            genre_ids_cont_all: filter_params[:genre_ids_cont_all].map { |id| "|#{id}|" }
+                          })
     else
-      {}
+      filter_params
     end
   end
 

@@ -13,3 +13,6 @@ pin '@stimulus-components/auto-submit', to: '@stimulus-components--auto-submit.j
 
 pin 'bootstrap' # @5.3.3
 pin '@popperjs/core', to: 'https://unpkg.com/@popperjs/core@2.11.6/dist/esm/index.js'
+
+pin 'firebase/app', to: 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js'
+pin 'firebase/firestore', to: 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js'

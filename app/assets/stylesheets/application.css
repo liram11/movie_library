@@ -101,3 +101,13 @@ th {
 .icon-30 {
   font-size: 30px;
 }
+
+.comments__wrapper {
+  min-height: 200px;
+  max-height: 600px;
+  overflow: scroll;
+}
+
+.comment {
+  padding: 8px;
+}

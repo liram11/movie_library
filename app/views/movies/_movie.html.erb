@@ -1,4 +1,4 @@
-<%= content_tag :tr, id: dom_id(movie), class: 'table__row_selectable', data: { controller:"modal", action: "click->modal#show" } do %>
+<%= content_tag :tr, id: dom_id(movie), class: 'table__row_selectable', data: { action: "click->modal#show", movie_id: movie.id, title: movie.title } do %>
   <td>
     <%= movie.title %>
   </td>
@@ -23,6 +23,5 @@
       <% end %>
     <% end %>
 
-    <%= render partial: 'comment_modal', locals: { movie: movie } %>
   </td>
 <% end %>
